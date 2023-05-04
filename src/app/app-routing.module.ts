@@ -17,7 +17,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'settings', component: SettingsComponent },
+      { path: 'notification', component: SettingsComponent },
       { path: 'customers', component: CustomersComponent },
       { path: 'departments', component: DepartmentsComponent },
       { path: 'orders', component: OrdersComponent },

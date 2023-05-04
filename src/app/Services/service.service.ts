@@ -119,4 +119,17 @@ export class ServiceService {
   updateOrderStatus(id: object, status: any) {
     return this.http.patch(`${environment.APIURL}/order/${id}`, { status });
   }
+
+  // productApproval
+
+  getAllProductsApprove() {
+    return this.http.get(`${environment.APIURL}/productApproval`);
+  }
+
+  setProductApprove(id: any, response: object) {
+    return this.http.post(
+      `${environment.APIURL}/productApproval/${id}`,
+      response
+    );
+  }
 }
