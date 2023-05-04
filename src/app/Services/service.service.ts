@@ -76,7 +76,7 @@ export class ServiceService {
 
   // Delete
 
-  deleteProduct(id: object) {
+  deleteProduct(id: any) {
     return this.http.delete(`${environment.APIURL}/product/${id}`);
   }
 

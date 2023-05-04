@@ -11,31 +11,9 @@ export interface Product {
     en: string;
   };
   quantity: number;
-  variety: {
-    colors: {
-      ar: string[];
-      en: string[];
-    };
-    sizes: {
-      ar: string[];
-      en: string[];
-    };
-  };
   photos: string[];
   mainPhoto?: string;
-  badges: {
-    ar: string[];
-    en: string[];
-  };
   productDetails: {
-    ar?: string;
-    en?: string;
-  };
-  specifications: {
-    ar?: string;
-    en?: string;
-  }[];
-  warranty: {
     ar?: string;
     en?: string;
   };
@@ -43,7 +21,6 @@ export interface Product {
   departmentID: string;
   subDepartmentID: string;
   nestedSubDepartment: string;
-  sellerID: string;
   createdAt?: Date;
   updatedAt?: Date;
 }

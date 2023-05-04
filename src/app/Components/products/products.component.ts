@@ -20,10 +20,10 @@ export class ProductsComponent implements OnInit {
   allSubSubDepartments: SubSubDepartment[] = [];
   sellers: any = [];
   prodDetails: any = {};
-  productWillUpdate: object = {};
+  productWillUpdateId: any;
   productValue: any = {};
   editProductForm!: FormGroup;
-  // addProductForm: FormGroup;
+
   loading: boolean = false;
   file: any;
   resp: any;
@@ -34,22 +34,12 @@ export class ProductsComponent implements OnInit {
     priceAfter: 0, //done
     brand: { ar: '', en: '' }, //done
     quantity: 0, //done
-    variety: {
-      colors: {
-        ar: [],
-        en: [],
-      },
-    }, //done
     sizes: {
       ar: [],
       en: [],
     }, //done
     photos: [''],
     mainPhoto: '',
-    badges: {
-      ar: [],
-      en: [],
-    }, //done
     productDetails: {
       ar: '',
       en: '',
@@ -69,7 +59,57 @@ export class ProductsComponent implements OnInit {
     subDepartmentID: '', //done
     // nestedSubDepartment: '6439046995a45fbd57914d6d',
     nestedSubDepartment: '', //done
-    sellerID: '', //done
+  };
+
+  prodTwo: any = {
+    name: { ar: '', en: '' }, //done
+    priceBefore: 0,
+    priceAfter: 0, //done
+    brand: { ar: '', en: '' }, //done
+    quantity: 0, //done
+    sizes: {
+      ar: [],
+      en: [],
+    }, //done
+    photos: [''],
+    mainPhoto: '',
+    productDetails: {
+      ar: '',
+      en: '',
+    }, //done
+    specifications: {
+      ar: '',
+      en: '',
+    }, //done
+    warranty: {
+      ar: '',
+      en: '',
+    }, //done
+    isActive: true,
+    // departmentID: '6437279f17066f527269744d',
+    departmentID: '', //done
+    // subDepartmentID: '6437279f17066f527269744d',
+    subDepartmentID: '', //done
+    // nestedSubDepartment: '6439046995a45fbd57914d6d',
+    nestedSubDepartment: '', //done
+  };
+
+  prodThree: any = {
+    name: { ar: '', en: '' }, //done
+    priceBefore: 0,
+    priceAfter: 0, //done
+    brand: { ar: '', en: '' }, //done
+    quantity: 0, //done
+    photos: [''],
+    mainPhoto: '',
+    productDetails: {
+      ar: '',
+      en: '',
+    }, //done
+    isActive: true,
+    departmentID: '', //done
+    subDepartmentID: '', //done
+    nestedSubDepartment: '', //done
   };
 
   constructor(
@@ -116,9 +156,11 @@ export class ProductsComponent implements OnInit {
       });
   }
 
-  editProduct(productId: object, product: object) {
-    this.productWillUpdate = productId;
-    this.productValue = product;
+  editProduct(productId: any, product: any) {
+    this.productWillUpdateId = productId;
+    this.prodTwo = product;
+    console.log(productId);
+    console.log(product);
   }
 
   getProducts() {
@@ -126,12 +168,11 @@ export class ProductsComponent implements OnInit {
     this.service.getAllProducts().subscribe((result: any) => {
       this.products = result.products;
       this.loading = false;
-      console.log(this.products);
     });
   }
 
-  viewDetails(index: number) {
-    this.prodDetails = this.products[index];
+  viewDetails(productId: any, product: any) {
+    this.prodThree = product;
   }
 
   getAllDepartments() {
@@ -152,29 +193,24 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  removeProduct(id: object) {
+  removeProduct(id: any) {
+    console.log(id);
+
     this.service.deleteProduct(id).subscribe((res) => {
-      this.getProducts();
-      alert('Product Deletde Successfully');
+      window.location.reload();
     });
   }
 
   updateProduct() {
-    const modal = this.editProductForm.value;
-    console.log(this.productWillUpdate);
-    console.log(modal);
     this.service
-      .updateProduct(this.productWillUpdate, modal)
-      .subscribe((res) => {
-        this.getProducts();
-        window.location.reload();
-      });
+      .updateProduct(this.productWillUpdateId, this.prodTwo)
+      .subscribe((res) => {});
+    window.location.reload();
   }
 
   getAllSellers() {
     this.service.getAllSellers().subscribe((res) => {
       this.sellers = res;
-      console.log(this.sellers);
     });
   }
 }
