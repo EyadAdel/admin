@@ -25,6 +25,7 @@ export class SettingsComponent implements OnInit {
     departmentID: '', //done
     subDepartmentID: '', //done
     nestedSubDepartment: '', //done
+    sellerID: {},
   };
 
   constructor(private service: ServiceService) {}

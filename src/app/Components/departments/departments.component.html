@@ -52,7 +52,7 @@
             <h5 class="w-100 text-center">{{department.name.en}}</h5>
             <div class="d-flex ms-5 mx-5 align-items-center w-100">
               <button class="btn btn-primary btn-sm bg-warning" style="width: 70px" type="button" data-bs-toggle="modal"
-                data-bs-target="#exampleModalTwo">Edite</button>
+                data-bs-target="#exampleModalTwo" (click)="sendDepartmentId(department._id)">Edite</button>
               <button class="btn btn-primary btn-sm bg-danger ms-3" style="width: 70px" type="button"
                 (click)="removeDepartment(department._id)">Remove</button>
             </div>
@@ -64,7 +64,7 @@
             <div class="modal-dialog" style="max-width: 1000px!important">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add Department</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Update Department</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -297,7 +297,7 @@
       <!-- Sub Sub Department Section Display -->
 
 
-      <section style="background-color: #eee;">
+      <section style="background-color: #eee; ">
 
         <div *ngFor="let subSubDepartment of subSubDepartments ; let i=index" class="container py-2 "
           style="height: 100px; padding-left: 60px; padding-right: 60px;">

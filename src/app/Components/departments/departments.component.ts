@@ -28,6 +28,7 @@ export class DepartmentsComponent implements OnInit {
   updateSub: object = {};
 
   subSubDepartmentValue: any;
+  departmentID: any;
 
   constructor(
     private service: ServiceService,
@@ -72,7 +73,6 @@ export class DepartmentsComponent implements OnInit {
     this.lodaing = true;
     this.service.getAllDepartments().subscribe((result: any) => {
       this.departments = result;
-      console.log(result);
       console.log(this.departments);
 
       this.lodaing = false;
@@ -95,13 +95,16 @@ export class DepartmentsComponent implements OnInit {
     });
   }
 
-  updateDepartment(id: object) {
+  updateDepartment(id: any) {
     const modal = this.form.value;
     this.service.updateDepartment(id, modal).subscribe((res) => {
       window.location.reload();
     });
   }
 
+  sendDepartmentId(id: any) {
+    this.departmentID = id;
+  }
   // Sub-Departments Methods
 
   getSubDepartments() {

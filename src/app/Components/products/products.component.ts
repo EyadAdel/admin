@@ -34,30 +34,15 @@ export class ProductsComponent implements OnInit {
     priceAfter: 0, //done
     brand: { ar: '', en: '' }, //done
     quantity: 0, //done
-    sizes: {
-      ar: [],
-      en: [],
-    }, //done
     photos: [''],
     mainPhoto: '',
     productDetails: {
       ar: '',
       en: '',
     }, //done
-    specifications: {
-      ar: '',
-      en: '',
-    }, //done
-    warranty: {
-      ar: '',
-      en: '',
-    }, //done
     isActive: true,
-    // departmentID: '6437279f17066f527269744d',
     departmentID: '', //done
-    // subDepartmentID: '6437279f17066f527269744d',
     subDepartmentID: '', //done
-    // nestedSubDepartment: '6439046995a45fbd57914d6d',
     nestedSubDepartment: '', //done
   };
 
@@ -67,30 +52,15 @@ export class ProductsComponent implements OnInit {
     priceAfter: 0, //done
     brand: { ar: '', en: '' }, //done
     quantity: 0, //done
-    sizes: {
-      ar: [],
-      en: [],
-    }, //done
     photos: [''],
     mainPhoto: '',
     productDetails: {
       ar: '',
       en: '',
     }, //done
-    specifications: {
-      ar: '',
-      en: '',
-    }, //done
-    warranty: {
-      ar: '',
-      en: '',
-    }, //done
     isActive: true,
-    // departmentID: '6437279f17066f527269744d',
     departmentID: '', //done
-    // subDepartmentID: '6437279f17066f527269744d',
     subDepartmentID: '', //done
-    // nestedSubDepartment: '6439046995a45fbd57914d6d',
     nestedSubDepartment: '', //done
   };
 
@@ -110,6 +80,7 @@ export class ProductsComponent implements OnInit {
     departmentID: '', //done
     subDepartmentID: '', //done
     nestedSubDepartment: '', //done
+    sellerID: {},
   };
 
   constructor(
@@ -159,8 +130,6 @@ export class ProductsComponent implements OnInit {
   editProduct(productId: any, product: any) {
     this.productWillUpdateId = productId;
     this.prodTwo = product;
-    console.log(productId);
-    console.log(product);
   }
 
   getProducts() {
@@ -168,6 +137,7 @@ export class ProductsComponent implements OnInit {
     this.service.getAllProducts().subscribe((result: any) => {
       this.products = result.products;
       this.loading = false;
+      console.log(this.products);
     });
   }
 

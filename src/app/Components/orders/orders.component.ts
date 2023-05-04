@@ -25,7 +25,6 @@ export class OrdersComponent implements OnInit {
     this.lodaing = true;
     this.service.getAllOrders().subscribe((result: any) => {
       this.orders = result;
-
       let counter = 0;
       for (const obj of this.orders) {
         if (obj.status === 'Deliverd') counter++;

@@ -103,7 +103,7 @@ export class ServiceService {
     return this.http.patch(`${environment.APIURL}/product/${id}`, obj);
   }
 
-  updateDepartment(id: object, obj: string) {
+  updateDepartment(id: any, obj: any) {
     return this.http.patch(`${environment.APIURL}/department/${id}`, obj);
   }
   updatesubDepartment(id: object, obj: string) {
